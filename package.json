@@ -1,0 +1,26 @@
+{
+  "name": "election-system",
+  "version": "1.0.0",
+  "description": "A secure online election system.",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "nodemon backend/src/server.js"
+  },
+  "keywords": [
+    "election",
+    "voting",
+    "secure"
+  ],
+  "author": "Jules",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

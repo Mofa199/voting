@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TAMSA Election</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <img src="images/logo_placeholder.png" alt="TAMSA Logo">
+        <span>TAMSA GENERAL ELECTION 25/26</span>
+        <img src="images/logo_placeholder.png" alt="Logo Placeholder">
+    </header>
+
+    <div class="container">
+        <div class="admin-dashboard">
+            <h2>Admin Dashboard</h2>
+
+            <!-- Add User Form -->
+            <h3>Add User</h3>
+            <input type="text" id="new-username" placeholder="Username">
+            <input type="password" id="new-password" placeholder="Password">
+            <select id="new-role">
+                <option value="voter">Voter</option>
+                <option value="admin">Admin</option>
+            </select>
+            <button id="addUserBtn">Add User</button>
+            <p id="addUserMessage"></p>
+
+            <!-- Users List -->
+            <h3>Users</h3>
+            <table class="results-table" id="usersTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Voted</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- User list will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <img src="images/logo_placeholder.png" alt="Logo Placeholder">
+        <span>&copy; 2024 TAMSA. All rights reserved.</span>
+        <span>Secured by mofas</span>
+        <img src="images/logo_placeholder.png" alt="Logo Placeholder">
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
