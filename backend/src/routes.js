@@ -27,6 +27,29 @@ router.post('/login', (req, res) => {
   });
 });
 
+// Admin login
+router.post('/admin/login', (req, res) => {
+    const { username, password } = req.body;
+    db.get('SELECT * FROM users WHERE username = ? AND role = "admin"', [username], (err, user) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      if (!user) {
+        return res.status(404).json({ error: 'Admin user not found' });
+      }
+      bcrypt.compare(password, user.password, (err, result) => {
+        if (err) {
+          return res.status(500).json({ error: err.message });
+        }
+        if (result) {
+          res.json({ message: 'Login successful', user: { id: user.id, username: user.username, role: user.role } });
+        } else {
+          res.status(401).json({ error: 'Invalid credentials' });
+        }
+      });
+    });
+  });
+
 // Get all candidates
 router.get('/candidates', (req, res) => {
     db.all('SELECT * FROM candidates', [], (err, rows) => {

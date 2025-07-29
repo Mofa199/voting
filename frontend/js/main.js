@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (page === 'login.html' || page === '') {
         handleLoginPage();
+    } else if (page === 'admin-login.html') {
+        handleAdminLoginPage();
     } else if (page === 'index.html') {
         handleVotingPage();
     } else if (page === 'results.html') {
@@ -37,6 +39,32 @@ function handleLoginPage() {
                 } else {
                     window.location.href = 'index.html';
                 }
+            } else {
+                messageEl.textContent = data.error;
+            }
+        });
+    }
+}
+
+function handleAdminLoginPage() {
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    if (adminLoginBtn) {
+        adminLoginBtn.addEventListener('click', async () => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageEl = document.getElementById('loginMessage');
+
+            const response = await fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                sessionStorage.setItem('user', JSON.stringify(data.user));
+                window.location.href = 'admin.html';
             } else {
                 messageEl.textContent = data.error;
             }
@@ -132,7 +160,7 @@ async function handleWinnersPage() {
 async function handleAdminPage() {
     const user = JSON.parse(sessionStorage.getItem('user'));
     if (!user || user.role !== 'admin') {
-        window.location.href = 'login.html';
+        window.location.href = 'admin-login.html';
         return;
     }
 
