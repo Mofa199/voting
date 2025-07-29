@@ -9,12 +9,24 @@ body {
     background-color: #333;
     color: white;
     padding: 1rem;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header img {
     width: 50px;
     vertical-align: middle;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.nav a:hover {
+    text-decoration: underline;
 }
 
 .footer {
@@ -60,6 +72,7 @@ button {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -73,6 +86,11 @@ button:hover {
     display: flex;
     gap: 1rem;
     align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.candidate-card:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .candidate-card img {
@@ -103,4 +121,5 @@ button:hover {
     padding: 1rem;
     border-radius: 5px;
     text-align: center;
+    border-left: 5px solid #28a745;
 }
